@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2b1b16">
+<meta name="description" content="Un pequeño universo hecho con cariño, para una persona especial.">
+<title>Un universo para ti 🤎</title>
+<style>
+:root{
+  --coffee:#4b3027;--deep:#211511;--deep2:#2d1d19;--cream:#fff5e6;
+  --paper:#f7ead8;--latte:#ead6bd;--gold:#c9a45c;--rose:#b87970;
+  --muted:#cbb49b;--line:#ffffff20;--shadow:0 22px 65px #10090680;
+  --accent:#c9a45c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at 50% -15%,#795541 0,#38251f 38%,#211511 78%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(#fff 0.7px,transparent .7px);background-size:31px 31px;z-index:-1}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1060px,100%);margin:auto;padding:18px 18px 70px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 0 18px}
+.brand{font:11px Arial,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--latte)}
+.icon-btn,.nav a{border:1px solid #ffffff24;background:#ffffff0b;color:var(--cream);border-radius:999px;padding:10px 14px;text-decoration:none;font:12px Arial,sans-serif;transition:.2s}
+.icon-btn:hover,.nav a:hover{background:#ffffff1c;border-color:#d7b879}
+.hero{min-height:660px;display:grid;place-items:center;text-align:center;position:relative;padding:55px 12px 65px;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #d9b56d35;border-radius:50%;width:min(78vw,650px);aspect-ratio:1;animation:orbit 45s linear infinite}
+.hero:after{width:min(62vw,500px);animation-direction:reverse;animation-duration:65s}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.hero-inner{position:relative;z-index:1;max-width:720px}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;font:10px Arial,sans-serif;color:var(--gold)}
+.hero h1{font-size:clamp(43px,8vw,82px);font-weight:normal;line-height:.98;margin:20px 0 18px;text-shadow:0 8px 35px #0008}
+.hero h1 em{font-style:normal;color:#e4c58f}
+.hero-sub{color:#e4d0b8;line-height:1.8;font-size:clamp(14px,2vw,17px);max-width:520px;margin:0 auto 27px}
+.initials{font-size:clamp(28px,5vw,46px);letter-spacing:.18em;color:#f5dfbd;margin:20px 0}
+.heart-mark{display:inline-block;color:#d9b56d;animation:heartbeat 1.8s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.14)}24%{transform:scale(1)}36%{transform:scale(1.09)}}
+.primary,.secondary{border:1px solid var(--gold);border-radius:999px;padding:13px 21px;background:linear-gradient(135deg,#79523a,#4b3027);color:#fff5e6;box-shadow:0 9px 25px #120b0960;transition:transform .2s,filter .2s}
+.primary:hover,.secondary:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.secondary{background:#ffffff0b;box-shadow:none}
+.nav{position:sticky;top:8px;z-index:20;display:flex;gap:7px;overflow-x:auto;padding:10px;margin:0 -5px 25px;background:#261813d9;backdrop-filter:blur(16px);border:1px solid #ffffff17;border-radius:18px;scrollbar-width:thin}
+.nav a{white-space:nowrap;padding:9px 12px}
+.section{margin:48px 0;scroll-margin-top:95px}
+.section-head{text-align:center;margin:0 auto 22px;max-width:660px}
+.kicker{font:10px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+h2{font-size:clamp(29px,5vw,43px);font-weight:normal;margin:9px 0 10px}
+.lead{color:var(--muted);line-height:1.7;font-size:14px}
+.panel{background:linear-gradient(145deg,#fff8ed,#eddbc4);color:var(--coffee);border:1px solid #d5b878;border-radius:24px;padding:clamp(18px,4vw,30px);box-shadow:var(--shadow)}
+.panel h3{font-weight:normal;margin:0 0 12px}
+.dark-panel{background:linear-gradient(145deg,#4c3026,#2c1c17);color:var(--cream);border:1px solid #d5b87855;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.center{text-align:center}
+.muted{color:#806044;font:13px Arial,sans-serif;line-height:1.7}
+.dark-muted{color:var(--muted);font:13px Arial,sans-serif;line-height:1.7}
+.counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}
+.timebox{padding:16px 8px;background:#fff8ed;border:1px solid #e2cba7;border-radius:16px;text-align:center}
+.timebox strong{display:block;font-size:clamp(25px,5vw,38px);font-weight:normal;color:var(--coffee);font-variant-numeric:tabular-nums}
+.timebox span{font:10px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#987650}
+.envelope-wrap{display:grid;place-items:center;padding:22px 0}
+.envelope{width:min(280px,75vw);height:178px;position:relative;background:#c69d70;border-radius:8px;box-shadow:0 16px 28px #3c241a35;cursor:pointer;perspective:700px}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,#e7c99e,#b98859);clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);border-radius:8px}
+.envelope:after{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:#d7b486;clip-path:polygon(0 0,100% 0,50% 58%);transform-origin:top;transition:transform .9s;z-index:3}
+.envelope.open:after{transform:rotateX(180deg)}
+.seal{position:absolute;z-index:4;left:50%;top:52%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#754735;color:#f9e6c9;display:grid;place-items:center;font-size:23px;box-shadow:0 3px 12px #0003;transition:.4s}
+.envelope.open .seal{opacity:0;transform:translate(-50%,-50%) scale(.4)}
+.letter{position:absolute;z-index:2;left:8%;right:8%;bottom:9px;height:145px;background:#fff5e6;border-radius:5px;padding:16px 13px;color:#55392c;text-align:center;line-height:1.5;transition:transform 1s,bottom 1s;overflow:hidden}
+.envelope.open .letter{transform:translateY(-115px);bottom:30px}
+.letter small{font:10px Arial,sans-serif;letter-spacing:.15em;color:#a17b4e}
+.letter p{font-size:14px}
+.caption{font:11px Arial,sans-serif;color:#8a6a4c;text-align:center;margin-top:10px;line-height:1.6}
+.timeline{position:relative;margin:10px auto;max-width:700px}
+.timeline:before{content:"";position:absolute;left:17px;top:5px;bottom:5px;width:1px;background:#c9a45c88}
+.event{position:relative;padding:0 0 23px 52px}
+.event:before{content:"";position:absolute;left:10px;top:5px;width:15px;height:15px;border-radius:50%;background:#c9a45c;border:3px solid #f8ead8;box-shadow:0 0 0 1px #c9a45c}
+.event time{font:10px Arial,sans-serif;letter-spacing:.15em;color:#a17b4e;text-transform:uppercase}
+.event h4{font-weight:normal;font-size:19px;margin:5px 0}
+.event p{font:13px Arial,sans-serif;color:#806044;line-height:1.6;margin:0}
+.letter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.letter-card{border:1px solid #d7bd94;background:#fff8ed;color:#56392b;border-radius:18px;padding:18px;text-align:left;min-height:115px;transition:.2s;cursor:pointer}
+.letter-card:hover{transform:translateY(-3px);box-shadow:0 10px 22px #4b30271b}
+.letter-card span{font-size:25px;display:block;margin-bottom:9px}
+.letter-card strong{font-weight:normal;font-size:17px}
+.letter-content{white-space:pre-line;line-height:1.8;font-size:16px}
+.reason-box{min-height:215px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.reason-number{font:10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#a47c38}
+.reason-text{font-size:clamp(22px,4vw,32px);line-height:1.45;margin:20px 0;max-width:700px}
+.progress{height:6px;border-radius:99px;background:#dfc9a8;overflow:hidden;margin:14px 0}
+.progress>i{display:block;height:100%;width:1%;background:linear-gradient(90deg,#9c7044,#d2ad68);transition:width .35s}
+.actions{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.mini-btn{border:1px solid #b9935d;background:transparent;color:#644632;border-radius:999px;padding:10px 15px;font:12px Arial,sans-serif}
+.mini-btn.active{background:#754735;color:#fff5e6}
+.quiz-question{font-size:21px;line-height:1.45;margin:10px 0 18px}
+.quiz-options{display:grid;gap:9px}
+.quiz-option{border:1px solid #d5b878;background:#fff8ed;color:#54372a;border-radius:13px;padding:13px;text-align:left}
+.quiz-option:hover{background:#f0dfc7}
+.feedback{min-height:28px;color:#8a623d;font:13px Arial,sans-serif;margin-top:12px}
+.secret-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.secret{background:#fff7e9;border:1px solid #d6bb91;color:#684733;border-radius:16px;padding:15px 8px;min-height:100px}
+.secret span{font-size:24px;display:block;margin-bottom:8px}
+.heart-stage{display:grid;place-items:center;min-height:250px;position:relative;overflow:hidden}
+.big-heart{font-size:clamp(100px,22vw,160px);border:0;background:transparent;color:#b87970;text-shadow:0 12px 30px #120b0950;animation:heartbeat 1.7s infinite;transition:transform .3s}
+.big-heart:active{transform:scale(1.25)}
+.float-heart{position:absolute;pointer-events:none;animation:floatUp 1.8s ease-out forwards;font-size:20px}
+@keyframes floatUp{0%{opacity:0;transform:translateY(15px) scale(.6)}20%{opacity:1}100%{opacity:0;transform:translateY(-130px) translateX(var(--drift)) scale(1.4)}}
+.music-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.music-controls input{max-width:100%;font:12px Arial,sans-serif}
+.flower-garden{min-height:190px;display:flex;align-items:end;justify-content:center;gap:clamp(8px,3vw,24px);padding:20px 5px 0;overflow:hidden}
+.flower{font-size:clamp(35px,8vw,62px);transform-origin:bottom;animation:sway 3s ease-in-out infinite alternate;filter:drop-shadow(0 8px 8px #170e0b30)}
+.flower:nth-child(even){animation-delay:-1.2s}
+@keyframes sway{from{transform:rotate(-7deg) translateY(8px)}to{transform:rotate(7deg) translateY(-4px)}}
+.promise-list{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.promise{display:flex;gap:10px;align-items:flex-start;background:#fff8ed;border:1px solid #e1cba9;border-radius:13px;padding:12px;color:#684733;font-size:14px;line-height:1.5}
+.promise input{accent-color:#8b5d3d;margin-top:3px}
+.dreams{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.dream{background:#fff8ed;border:1px solid #e1cba9;color:#644632;border-radius:15px;padding:15px;text-align:left;line-height:1.5}
+.dream b{display:block;font-weight:normal;font-size:16px;margin-bottom:4px}
+.roulette{font-size:clamp(20px,4vw,28px);line-height:1.5;text-align:center;min-height:125px;display:grid;place-items:center}
+.settings-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.field label{display:block;font:11px Arial,sans-serif;color:#806044;margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;border:1px solid #c6a979;border-radius:11px;background:#fffaf2;padding:11px;color:#4b3027}
+.field textarea{min-height:75px;resize:vertical}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:13px;border:2px solid #d6bb91}
+.final-card{text-align:center;padding:35px 22px}
+.final-card .final-heart{font-size:55px;animation:heartbeat 1.8s infinite}
+.final-question{font-size:clamp(23px,4vw,34px);line-height:1.4;margin:20px auto;max-width:650px}
+.footer{text-align:center;color:#cbb49b;font:11px Arial,sans-serif;line-height:1.8;padding:35px 8px}
+.modal{position:fixed;inset:0;background:#140c0aef;display:none;place-items:center;padding:20px;z-index:50}
+.modal.show{display:grid}
+.modal-box{width:min(560px,100%);max-height:85vh;overflow:auto;background:#f7ead8;color:#4b3027;border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+.modal-box h3{font-weight:normal;font-size:26px;margin:0 0 12px}
+.modal-box p{line-height:1.8;white-space:pre-line}
+.modal-close{float:right;background:transparent;border:0;color:#4b3027;font-size:24px}
+.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);opacity:0;background:#f7ead8;color:#4b3027;border:1px solid #c9a45c;border-radius:99px;padding:11px 17px;font:12px Arial,sans-serif;z-index:80;transition:.3s;pointer-events:none;max-width:90%;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.hidden{display:none!important}
+@media(max-width:650px){
+ .wrap{padding:12px 13px 45px}.hero{min-height:570px}.grid{grid-template-columns:1fr}
+ .counter-grid{gap:6px}.timebox{padding:13px 3px}.timebox span{font-size:8px}
+ .letter-grid,.promise-list,.dreams,.settings-grid{grid-template-columns:1fr}
+ .secret-grid{gap:6px}.secret{font-size:12px;padding:12px 5px}
+ .nav{top:4px}.nav a{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar">
+  <div class="brand">Norge · Little sunshine &nbsp; ♡ &nbsp; Channel · Ojitos lindos</div>
+  <button class="icon-btn" id="settingsTop">⚙ Personalizar</button>
+</header>
+
+<section class="hero" id="inicio">
+ <div class="hero-inner">
+  <div class="eyebrow">Una historia escrita con cariño</div>
+  <div class="initials" id="heroInitials">C <span class="heart-mark">♡</span> N</div>
+  <h1>Para Channel,<br><em>mi ojitos lindos</em></h1>
+  <p class="hero-sub" id="heroSubtitle">Hay regalos que se envuelven en papel y otros que se construyen con recuerdos, palabras y un poquito de cielo. Este es para ti.</p>
+  <button class="primary" id="startGift">Descubrir mi regalo <span class="heart-mark">♡</span></button>
+  <p class="dark-muted" style="margin-top:18px">Desliza despacito. Hay pequeños secretos esperándote.</p>
+ </div>
+</section>
+
+<nav class="nav" aria-label="Navegación principal">
+ <a href="#inicio">Inicio</a><a href="#contador">Nuestro tiempo</a><a href="#carta">La carta</a><a href="#flores-azules">Flores azules</a><a href="#historia">Historia</a><a href="#razones">100 razones</a><a href="#sorpresas">Sorpresas</a><a href="#final">Final</a>
+</nav>
+
+<section class="section" id="contador">
+ <div class="section-head"><div class="kicker">Desde aquel día</div><h2>El tiempo contigo</h2><p class="lead">Cada segundo cuenta, no porque el tiempo mida lo que siento, sino porque cada instante forma parte de nuestra historia.</p></div>
+ <div class="panel center">
+  <div class="counter-grid">
+   <div class="timebox"><strong id="days">0</strong><span>Días</span></div>
+   <div class="timebox"><strong id="hours">00</strong><span>Horas</span></div>
+   <div class="timebox"><strong id="minutes">00</strong><span>Minutos</span></div>
+   <div class="timebox"><strong id="seconds">00</strong><span>Segundos</span></div>
+  </div>
+  <p class="muted" id="counterLabel">Desde el 12 de octubre de 2026 · 1:00 a. m.</p>
+ </div>
+</section>
+
+<section class="section" id="carta">
+ <div class="section-head"><div class="kicker">Algo que quiero contarte</div><h2>Una carta para ti</h2><p class="lead">Toca el sobre y deja que esta pequeña carta encuentre su camino hasta ti.</p></div>
+ <div class="panel center">
+  <div class="envelope-wrap"><div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir la carta"><div class="letter"><small>PARA CHANNEL, MI OJITOS LINDOS</small><p id="envelopePreview">Hay palabras que merecen un lugar especial...</p></div><div class="seal">♡</div></div></div>
+  <button class="primary" id="openLetter">Abrir mi carta</button>
+  <p class="muted" style="margin-top:13px">Hecha especialmente para ti, con todo mi cariño.</p>
+ </div>
+</section>
+
+<section class="section" id="flores-azules">
+ <div class="section-head"><div class="kicker">4 · 11 · 2026</div><h2>Unas flores para ti</h2><p class="lead">Porque hoy quería regalarte algo que llevara un poquito de mi cariño hasta ti.</p></div>
+ <div class="panel center" style="background:linear-gradient(145deg,#fff8ee,#e9dfd2);">
+  <div class="blue-roses" aria-label="Ramo de rosas azules">
+   <svg viewBox="0 0 600 290" role="img" aria-label="Ramo de rosas azules con hojas verdes" style="width:min(100%,560px);height:auto;display:block;margin:auto">
+    <defs>
+     <linearGradient id="petalBlue" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b8d9ff"/><stop offset=".48" stop-color="#4f8fca"/><stop offset="1" stop-color="#174b83"/></linearGradient>
+     <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#78966a"/><stop offset="1" stop-color="#314d3c"/></linearGradient>
+    </defs>
+    <g stroke="#456b4c" stroke-width="5" fill="none"><path d="M300 135 Q280 210 220 270"/><path d="M300 135 Q310 220 340 270"/><path d="M300 135 Q350 205 420 265"/><path d="M300 135 Q260 210 160 250"/><path d="M300 135 Q330 205 480 240"/></g>
+    <g fill="url(#leafGreen)" stroke="#314d3c" stroke-width="2"><path d="M260 205 Q190 150 175 205 Q215 240 260 205Z"/><path d="M337 213 Q390 155 425 200 Q390 240 337 213Z"/><path d="M225 235 Q160 200 145 242 Q185 267 225 235Z"/><path d="M375 235 Q445 195 462 233 Q425 265 375 235Z"/><path d="M290 224 Q265 175 245 195 Q255 235 290 224Z"/></g>
+    <g transform="translate(300 95)"><path fill="url(#petalBlue)" d="M0 42 C-55 40 -58 -8 -28 -27 C-8 -42 5 -25 0 -9 C10 -49 55 -38 57 -4 C60 22 35 48 0 42Z"/><path fill="#8fc0ed" d="M-27 12 C-35 -7 -15 -26 0 -12 C17 -32 39 -13 28 7 C18 24 -12 29 -27 12Z"/><path fill="#d7ebff" d="M-12 5 C-13 -8 6 -17 15 -5 C22 5 6 18 -6 16Z"/></g>
+    <g transform="translate(190 145) scale(.78)"><path fill="url(#petalBlue)" d="M0 42 C-55 40 -58 -8 -28 -27 C-8 -42 5 -25 0 -9 C10 -49 55 -38 57 -4 C60 22 35 48 0 42Z"/><path fill="#8fc0ed" d="M-27 12 C-35 -7 -15 -26 0 -12 C17 -32 39 -13 28 7 C18 24 -12 29 -27 12Z"/><path fill="#d7ebff" d="M-12 5 C-13 -8 6 -17 15 -5 C22 5 6 18 -6 16Z"/></g>
+    <g transform="translate(410 150) scale(.8)"><path fill="url(#petalBlue)" d="M0 42 C-55 40 -58 -8 -28 -27 C-8 -42 5 -25 0 -9 C10 -49 55 -38 57 -4 C60 22 35 48 0 42Z"/><path fill="#8fc0ed" d="M-27 12 C-35 -7 -15 -26 0 -12 C17 -32 39 -13 28 7 C18 24 -12 29 -27 12Z"/><path fill="#d7ebff" d="M-12 5 C-13 -8 6 -17 15 -5 C22 5 6 18 -6 16Z"/></g>
+    <g transform="translate(245 65) scale(.58)"><path fill="url(#petalBlue)" d="M0 42 C-55 40 -58 -8 -28 -27 C-8 -42 5 -25 0 -9 C10 -49 55 -38 57 -4 C60 22 35 48 0 42Z"/><path fill="#8fc0ed" d="M-27 12 C-35 -7 -15 -26 0 -12 C17 -32 39 -13 28 7 C18 24 -12 29 -27 12Z"/></g>
+    <g transform="translate(360 55) scale(.58)"><path fill="url(#petalBlue)" d="M0 42 C-55 40 -58 -8 -28 -27 C-8 -42 5 -25 0 -9 C10 -49 55 -38 57 -4 C60 22 35 48 0 42Z"/><path fill="#8fc0ed" d="M-27 12 C-35 -7 -15 -26 0 -12 C17 -32 39 -13 28 7 C18 24 -12 29 -27 12Z"/></g>
+    <path d="M220 245 Q300 285 400 245" fill="none" stroke="#b58a52" stroke-width="5" stroke-linecap="round"/>
+    <path d="M300 257 l-20 25 28 -8 18 10 -5 -27" fill="#c9a45c"/>
+   </svg>
+  </div>
+  <h2 style="color:#315b8a;margin-top:8px">Feliz 4 de noviembre, mi amor</h2>
+  <p style="font-size:clamp(19px,3vw,25px);line-height:1.55;color:#365d88">Hoy se regalan flores azules…<br>y yo quería que las tuyas llegaran acompañadas de todo mi cariño.</p>
+  <p class="muted">Para Channel, mi ojitos lindos.<br>Con amor, Norge · tu Little sunshine. 💙</p>
+ </div>
+</section>
+
+<section class="section" id="historia">
+ <div class="section-head"><div class="kicker">Capítulos de nosotros</div><h2>Nuestra historia</h2><p class="lead">Una historia no se construye de una sola vez. Se escribe con pequeños momentos que terminan significándolo todo.</p></div>
+ <div class="panel">
+  <div class="timeline" id="timeline">
+   <div class="event"><time>12 de octubre de 2026</time><h4>El comienzo de nuestra historia</h4><p>Una fecha que elegimos guardar como el primer capítulo de algo muy bonito.</p></div>
+   <div class="event"><time>Un día para recordar</time><h4>La primera gran sonrisa</h4><p>Ese momento pequeño que merece quedarse para siempre en la memoria.</p></div>
+   <div class="event"><time>Lo que viene</time><h4>Muchos capítulos por escribir</h4><p>Porque todavía nos esperan recuerdos, aprendizajes y sueños compartidos.</p></div>
+  </div>
+  <p class="muted center">Puedes editar los recuerdos y sus fechas en «Personalizar».</p>
+ </div>
+</section>
+
+<section class="section" id="cartas">
+ <div class="section-head"><div class="kicker">Para cualquier momento</div><h2>Abre una carta cuando...</h2><p class="lead">No todas las palabras se necesitan el mismo día. Guarda estas para cuando alguna te haga falta.</p></div>
+ <div class="panel">
+  <div class="letter-grid" id="lettersGrid">
+   <button class="letter-card" data-letter="sad"><span>🌧️</span><strong>Estés triste</strong><div class="muted">Un poquito de calma para ti.</div></button>
+   <button class="letter-card" data-letter="miss"><span>🌙</span><strong>Me extrañes</strong><div class="muted">Para sentirme un poquito más cerca.</div></button>
+   <button class="letter-card" data-letter="smile"><span>🌷</span><strong>Necesites sonreír</strong><div class="muted">Un recordatorio bonito.</div></button>
+   <button class="letter-card" data-letter="doubt"><span>🤎</span><strong>Dudes de cuánto te amo</strong><div class="muted">Para que nunca lo olvides.</div></button>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="razones">
+ <div class="section-head"><div class="kicker">Podría escribir muchas más</div><h2>100 razones para amarte</h2><p class="lead">Una por una, sin prisa. Marca tus favoritas y vuelve a ellas cuando quieras.</p></div>
+ <div class="panel">
+  <div class="reason-box">
+   <div class="reason-number" id="reasonCounter">RAZÓN 1 DE 100</div>
+   <div class="reason-text" id="reasonText" aria-live="polite"></div>
+   <div class="muted" id="favoriteCount">0 favoritas guardadas</div>
+  </div>
+  <div class="progress"><i id="reasonProgress"></i></div>
+  <div class="actions">
+   <button class="mini-btn" id="prevReason">← Anterior</button>
+   <button class="mini-btn" id="favoriteReason">♡ Guardar favorita</button>
+   <button class="primary" id="nextReason">Siguiente →</button>
+  </div>
+  <div class="actions" style="margin-top:12px"><button class="mini-btn" id="showFavorites">Ver mis favoritas</button><button class="mini-btn" id="randomReason">Sorpréndeme</button></div>
+ </div>
+</section>
+
+<section class="section" id="juego">
+ <div class="section-head"><div class="kicker">¿Cuánto recuerdas?</div><h2>Un pequeño juego sobre nosotros</h2><p class="lead">Responde estas preguntas sobre los detalles de nuestra historia. Puedes cambiar las respuestas en Personalizar.</p></div>
+ <div class="panel">
+  <div class="reason-number" id="quizProgress">PREGUNTA 1 DE 5</div>
+  <div class="quiz-question" id="quizQuestion"></div>
+  <div class="quiz-options" id="quizOptions"></div>
+  <div class="feedback" id="quizFeedback" aria-live="polite"></div>
+  <div class="actions"><button class="mini-btn" id="nextQuiz" disabled>Siguiente pregunta →</button><button class="mini-btn" id="restartQuiz">Volver a empezar</button></div>
+ </div>
+</section>
+
+<section class="section" id="sorpresas">
+ <div class="section-head"><div class="kicker">Pequeños detalles escondidos</div><h2>Un rincón de sorpresas</h2><p class="lead">Hay cosas que no necesitan hacer ruido para ser especiales. Toca, descubre y guarda cada mensaje.</p></div>
+ <div class="grid">
+  <div class="panel">
+   <h3 class="center">Pequeños secretos</h3>
+   <div class="secret-grid">
+    <button class="secret" data-secret="secret1"><span>✉️</span>Un secreto</button>
+    <button class="secret" data-secret="secret2"><span>🌙</span>Si dudas</button>
+    <button class="secret" data-secret="secret3"><span>✨</span>Otro universo</button>
+   </div>
+   <p class="muted center" id="secretMessage" style="margin-top:15px;min-height:65px">Elige un sobre para descubrir su mensaje.</p>
+  </div>
+  <div class="panel center">
+   <h3>Un corazón para ti</h3>
+   <p class="muted">Tócalo y mira lo que sucede.</p>
+   <div class="heart-stage" id="heartStage"><button class="big-heart" id="bigHeart" aria-label="Tocar el corazón">♥</button></div>
+   <p class="muted">Cada latido es un pequeño «te quiero».</p>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="musica">
+ <div class="section-head"><div class="kicker">Una canción para acompañar</div><h2>Nuestra banda sonora</h2><p class="lead">Puedes elegir una canción que tenga un significado especial para los dos. El archivo de audio se reproduce desde tu dispositivo.</p></div>
+ <div class="panel">
+  <div class="music-controls">
+   <input type="file" id="musicFile" accept="audio/*" aria-label="Elegir archivo de música">
+   <button class="mini-btn" id="playMusic">▶ Reproducir</button><button class="mini-btn" id="pauseMusic">Ⅱ Pausar</button>
+  </div>
+  <audio id="audioPlayer" controls style="width:100%;margin-top:15px"></audio>
+  <p class="muted">Por privacidad, la canción no se sube a la página. Cada persona puede seleccionar un archivo de audio que tenga guardado y permiso para utilizar.</p>
+ </div>
+</section>
+
+<section class="section" id="jardin">
+ <div class="section-head"><div class="kicker">Algo bonito para ti</div><h2>Un jardín que florece</h2><p class="lead">Como las cosas bonitas, las flores también necesitan tiempo, cuidado y un poquito de luz.</p></div>
+ <div class="panel center">
+  <div class="flower-garden" id="flowerGarden"><span class="flower">🌷</span><span class="flower">🌼</span><span class="flower">🌸</span><span class="flower">🌻</span><span class="flower">🌷</span></div>
+  <p class="muted" id="flowerMessage">Toca el jardín para recibir una pequeña dedicatoria.</p>
+  <button class="mini-btn" id="flowerButton">Hacer florecer el jardín ✨</button>
+ </div>
+</section>
+
+<section class="section" id="promesas">
+ <div class="section-head"><div class="kicker">No son palabras al aire</div><h2>20 promesas para el futuro</h2><p class="lead">Promesas que quiero cuidar con acciones, respeto y cariño. Puedes marcar las que más te emocionen.</p></div>
+ <div class="panel"><div class="promise-list" id="promiseList"></div><p class="muted center" id="promiseCount" style="margin-top:15px">0 de 20 promesas marcadas</p></div>
+</section>
+
+<section class="section" id="futuro">
+ <div class="section-head"><div class="kicker">Lo que todavía soñamos</div><h2>Nuestro futuro</h2><p class="lead">No hace falta tener todo resuelto hoy. Me ilusiona pensar en las cosas que algún día podríamos construir juntos.</p></div>
+ <div class="panel"><div class="dreams">
+  <div class="dream">✈️ <b>Conocer lugares nuevos</b>Guardar recuerdos en sitios que todavía no conocemos.</div>
+  <div class="dream">🏡 <b>Un hogar nuestro</b>Un lugar tranquilo donde podamos sentirnos en casa.</div>
+  <div class="dream">💍 <b>Un compromiso bonito</b>Elegirnos con libertad, respeto y convicción.</div>
+  <div class="dream">☕ <b>Lo cotidiano</b>Compartir desayunos, charlas y días sencillos.</div>
+  <div class="dream">🌌 <b>Mirar el cielo</b>Volver a recordar esta fecha y todo lo que hemos vivido.</div>
+  <div class="dream">📷 <b>Una vida de recuerdos</b>Llenar álbumes con momentos auténticos.</div>
+ </div></div>
+</section>
+
+<section class="section" id="ruleta">
+ <div class="section-head"><div class="kicker">Una frase al azar</div><h2>La ruleta del cariño</h2><p class="lead">Pulsa el botón y deja que aparezca un mensaje diferente.</p></div>
+ <div class="panel center"><div class="roulette" id="rouletteText">A veces, la frase más sencilla es la que más se siente: me alegra que estés en mi vida. 🤎</div><button class="primary" id="spinRoulette">Dame otra frase ✨</button></div>
+</section>
+
+<section class="section" id="galeria">
+ <div class="section-head"><div class="kicker">Momentos que merecen quedarse</div><h2>Nuestro pequeño álbum</h2><p class="lead">Añade fotografías desde tu dispositivo. Se guardarán en este navegador, no se publicarán en ningún servidor.</p></div>
+ <div class="panel">
+  <input type="file" id="photoFiles" accept="image/*" multiple>
+  <div class="gallery" id="gallery"></div>
+  <p class="muted" id="galleryHint">Todavía no hay fotografías. Puedes añadir algunas cuando quieras.</p>
+ </div>
+</section>
+
+<section class="section" id="personalizar">
+ <div class="section-head"><div class="kicker">Hazlo vuestro</div><h2>Personalizar el regalo</h2><p class="lead">Los cambios se guardan en este navegador. Puedes editar nombres, fecha, dedicatoria y recuerdos.</p></div>
+ <div class="panel">
+  <div class="settings-grid">
+   <div class="field"><label for="yourName">Tu nombre y apodo</label><input id="yourName" value="Norge · Little sunshine"></div>
+   <div class="field"><label for="herName">Su nombre y apodo</label><input id="herName" value="Channel · Ojitos lindos"></div>
+   <div class="field"><label for="initialA">Tu inicial</label><input id="initialA" maxlength="3" value="N"></div>
+   <div class="field"><label for="initialB">Su inicial</label><input id="initialB" maxlength="3" value="C"></div>
+   <div class="field"><label for="startDate">Fecha de vuestra relación</label><input id="startDate" type="date" value="2026-10-12"></div>
+   <div class="field"><label for="startTime">Hora simbólica</label><input id="startTime" type="time" value="01:00"></div>
+   <div class="field"><label for="place">Lugar especial</label><input id="place" value="Guanajay, Artemisa, Cuba"></div>
+   <div class="field"><label for="accentColor">Color de detalles</label><select id="accentColor"><option value="#c9a45c">Dorado</option><option value="#d2a18d">Rosa antiguo</option><option value="#b9a18a">Champán</option><option value="#a7a17b">Verde oliva suave</option></select></div>
+   <div class="field" style="grid-column:1/-1"><label for="dedication">Dedicatoria principal</label><textarea id="dedication">Hay regalos que se envuelven en papel y otros que se construyen con recuerdos, palabras y un poquito de cielo. Este es para ti.</textarea></div>
+   <div class="field" style="grid-column:1/-1"><label for="letterText">Tu carta personal</label><textarea id="letterText" rows="7">Channel, mi ojitos lindos:
+
+Quiero dedicarte este pequeño universo porque a veces siento que un simple «te amo» se queda corto para explicar lo importante que eres en mi vida. Desde que llegaste, hay cosas cotidianas que tienen otro brillo: una conversación, una sonrisa, una canción o la ilusión de volver a saber de ti.
+
+No quiero prometerte una historia perfecta, porque sé que somos personas que siguen aprendiendo. Quiero ofrecerte algo más sincero: respeto, lealtad, paciencia y la voluntad de cuidar lo que estamos construyendo. Quiero estar a tu lado en los días extraordinarios y también en esos días normales que, cuando se comparten con la persona correcta, terminan siendo mis favoritos.
+
+Me ilusiona imaginar todo lo que todavía nos queda: conocernos más, cumplir sueños, viajar, crear recuerdos, formar un hogar algún día y, si la vida nos lo permite, llegar a ese momento en que podamos mirarnos y decir que valió la pena cada paso.
+
+Admiro tu forma de ser, tus sentimientos, tus ocurrencias y esos detalles que te hacen ser tú. No quiero que nunca sientas que tienes que dejar de ser quien eres para recibir mi cariño. Quiero que puedas crecer, brillar y perseguir tus sueños sabiendo que tienes a alguien que desea verte feliz.
+
+Gracias por ser mi Channel, mi ojitos lindos y una persona tan especial en mi historia. Con todo mi cariño, tu Little sunshine,
+Norge. 🤎</textarea></div>
+   <div class="field" style="grid-column:1/-1"><label for="timelineText">Recuerdos para vuestra línea del tiempo (uno por línea: fecha | título | descripción)</label><textarea id="timelineText" rows="5">12 de octubre de 2026 | El comienzo de nuestra historia | Una fecha que elegimos guardar como el primer capítulo de algo muy bonito.
+Un día especial | Un recuerdo que guardo | Un momento que siempre me hará sonreír.
+Lo que viene | Muchos capítulos por escribir | Todavía nos esperan recuerdos, aprendizajes y sueños compartidos.</textarea></div>
+  </div>
+  <div class="actions" style="margin-top:15px"><button class="primary" id="saveSettings">Guardar personalización</button><button class="mini-btn" id="resetSettings">Restaurar valores iniciales</button></div>
+  <p class="muted center" id="settingsStatus" style="margin-top:12px">Tus cambios se guardarán en este navegador.</p>
+ </div>
+</section>
+
+<section class="section" id="final">
+ <div class="panel final-card">
+  <div class="kicker">Y ahora, una última cosita...</div>
+  <div class="final-heart">🤎</div>
+  <h2>Si volviera a empezar...</h2>
+  <p class="lead" id="finalDedication">te buscaría de nuevo, no porque crea que todo será perfecto, sino porque me ilusiona seguir construyendo algo bonito contigo.</p>
+  <button class="primary" id="revealFinal">Abrir la última sorpresa</button>
+  <div id="finalReveal" class="hidden">
+   <p class="final-question">¿Te gustaría seguir escribiendo esta historia conmigo, capítulo a capítulo?</p>
+   <p class="lead">No necesito que el futuro esté escrito. Me basta con que podamos construirlo con sinceridad, paciencia y mucho cariño.</p>
+   <div class="heart-mark" style="font-size:35px">N ♡ C</div>
+  </div>
+ </div>
+</section>
+
+<footer class="footer">Hecho con cariño, en tonos café y dorado. 🤎<br>Un pequeño universo que puedes volver a visitar cuando quieras.</footer>
+</div>
+
+<div class="modal" id="messageModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal-box"><button class="modal-close" id="closeModal" aria-label="Cerrar">×</button><h3 id="modalTitle">Una carta para ti</h3><p id="modalBody"></p><div class="actions"><button class="primary" id="modalOk">Guardar en el corazón 🤎</button></div></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const reasons = [
+"Porque tu existencia hizo mi mundo un poquito más bonito.",
+"Porque contigo, hasta una conversación sencilla puede convertirse en mi momento favorito.",
+"Porque me encanta descubrir nuevas cosas de ti.",
+"Porque tienes una forma de ser que no se parece a la de nadie más.",
+"Porque me haces sonreír incluso cuando no era mi intención hacerlo.",
+"Porque me gusta imaginar todo lo que todavía nos queda por vivir.",
+"Porque tus mensajes pueden cambiar el tono de mi día.",
+"Porque quiero conocer tanto tus alegrías como tus días difíciles.",
+"Porque no necesito que seas perfecta para elegirte.",
+"Porque eres tú, y eso ya significa muchísimo para mí.",
+"Porque me gusta cuando me cuentas las cosas que te emocionan.",
+"Porque quiero ser alguien con quien puedas hablar con confianza.",
+"Porque tus pequeños detalles se quedan conmigo.",
+"Porque me encanta aprender cómo ves el mundo.",
+"Porque contigo puedo imaginar recuerdos que todavía no existen.",
+"Porque me gusta la manera en que tu personalidad va apareciendo en cada conversación.",
+"Porque quiero celebrar tus logros, grandes o pequeños.",
+"Porque me importa cómo te sientes, incluso cuando no encuentras las palabras.",
+"Porque quiero escucharte de verdad, no solo oírte.",
+"Porque me haces valorar esos instantes que parecen pequeños.",
+"Porque me gusta pensar en una canción y asociarla contigo.",
+"Porque tu risa merece muchos motivos para aparecer.",
+"Porque me nace compartir contigo las cosas que me hacen feliz.",
+"Porque quiero conocer tus sueños, aunque cambien con el tiempo.",
+"Porque me gusta que podamos construir nuestra propia historia.",
+"Porque cada día puedo descubrir otra razón para quererte.",
+"Porque me gusta tu manera única de expresarte.",
+"Porque quiero aprender a quererte de la forma en que te haga sentir querida.",
+"Porque tus gustos, ideas y ocurrencias forman parte de lo que te hace especial.",
+"Porque me emociona pensar en nuestras próximas conversaciones.",
+"Porque quiero que sientas que tus palabras tienen un lugar conmigo.",
+"Porque me gusta recordar cosas que me has contado.",
+"Porque quiero ser paciente contigo y también aprender de ti.",
+"Porque me encanta cuando compartimos algo que solo nosotros entendemos.",
+"Porque haces que la distancia no impida crear momentos bonitos.",
+"Porque quiero que te sientas libre de ser tú conmigo.",
+"Porque tus sueños merecen apoyo, no burlas.",
+"Porque quiero conocerte más allá de las primeras impresiones.",
+"Porque me gusta cuando un detalle tuyo me sorprende.",
+"Porque me haces pensar que el amor también está en la constancia.",
+"Porque quiero aprender de nuestros errores en vez de rendirme a la primera.",
+"Porque me gusta imaginar un futuro lleno de recuerdos compartidos.",
+"Porque quiero que podamos reírnos juntos de las tonterías.",
+"Porque tus opiniones me importan aunque no siempre pensemos igual.",
+"Porque quiero celebrar quién eres hoy y acompañar quién quieras llegar a ser.",
+"Porque me gusta que nuestra historia tenga detalles propios.",
+"Porque quiero demostrarte mi cariño también con acciones.",
+"Porque me interesa lo que te preocupa, no solo lo que te alegra.",
+"Porque me gusta cuando me enseñas una parte nueva de tu mundo.",
+"Porque eres una persona, no una idea perfecta, y quiero conocerte de verdad.",
+"Porque contigo quiero crear tradiciones que sean nuestras.",
+"Porque me encanta la posibilidad de sorprenderte con algo hecho especialmente para ti.",
+"Porque quiero recordar las fechas y los detalles que son importantes para nosotros.",
+"Porque me gusta cuando podemos hablar sin tener que fingir ser otras personas.",
+"Porque quiero que siempre puedas decirme lo que piensas con honestidad.",
+"Porque admiro las cosas que te esfuerzas por conseguir.",
+"Porque quiero darte motivos para confiar en mi cariño.",
+"Porque incluso una pantalla puede acercarme a tu mundo cuando hablamos.",
+"Porque me gusta imaginar tu reacción al encontrar una sorpresa como esta.",
+"Porque mereces palabras bonitas que sean sinceras y no solo adornos.",
+"Porque quiero cuidar lo que estamos construyendo, día a día.",
+"Porque me gusta que cada recuerdo tenga una pequeña historia detrás.",
+"Porque quiero preguntarte cómo estás y escuchar la respuesta de verdad.",
+"Porque me gusta que podamos aprender juntos.",
+"Porque quiero respetar tus tiempos, tus ideas y tu espacio.",
+"Porque me importa que te sientas valorada por quien eres.",
+"Porque quiero que nuestros desacuerdos nos enseñen a entendernos mejor.",
+"Porque me gusta pensar en los lugares que algún día podríamos conocer.",
+"Porque quiero compartir contigo mis canciones favoritas y escuchar las tuyas.",
+"Porque me interesa tu historia, incluso las partes que todavía no me has contado.",
+"Porque quiero que tengas espacio para cambiar y crecer.",
+"Porque me gusta cuando convertimos un día común en algo memorable.",
+"Porque quiero apoyarte sin decidir por ti.",
+"Porque me encanta la idea de seguir descubriendo cosas que nos hagan reír.",
+"Porque quiero tratar tus sentimientos con cuidado.",
+"Porque me gusta que podamos crear nuestro propio significado para pequeños detalles.",
+"Porque quiero ser honesto contigo incluso cuando una conversación sea difícil.",
+"Porque admiro tu manera personal de afrontar la vida.",
+"Porque quiero celebrar las pequeñas victorias que a veces nadie más nota.",
+"Porque me gusta imaginar una colección de cartas y recuerdos nuestros.",
+"Porque quiero aprender qué cosas te hacen sentir acompañada.",
+"Porque me importa que puedas contar conmigo sin dejar de ser independiente.",
+"Porque quiero que nuestro cariño tenga respeto, confianza y alegría.",
+"Porque me gusta pensar que aún nos esperan muchas primeras veces bonitas.",
+"Porque quiero recordar contigo las cosas que hoy nos hacen ilusión.",
+"Porque me gusta la idea de conocernos en distintas etapas de la vida.",
+"Porque quiero escucharte cuando estés emocionada por algo, aunque sea pequeñito.",
+"Porque quiero que sientas que no tienes que ganarte mi atención fingiendo ser alguien más.",
+"Porque me gusta encontrar formas nuevas de demostrarte lo que siento.",
+"Porque quiero que nuestros recuerdos sean tan auténticos como nosotros.",
+"Porque me emociona pensar en las sorpresas que todavía no te he dado.",
+"Porque quiero que podamos hablar de lo bonito y de lo complicado.",
+"Porque me gusta que una palabra, una canción o un color puedan recordarme a ti.",
+"Porque para mí el café ya tiene un significado más tierno desde que lo compartimos como símbolo.",
+"Porque quiero que el dorado de esta página te recuerde lo valiosa que eres para mí.",
+"Porque me gusta imaginar que, entre tantas posibilidades, nuestras historias coincidieron.",
+"Porque no quiero que este regalo sea solo una lista: quiero que sea una promesa de seguir conociéndote.",
+"Porque mi forma de quererte también puede crecer, aprender y hacerse más bonita.",
+"Porque eres parte de una historia que me hace ilusión seguir escribiendo.",
+"Porque hoy, entre cien razones, sigo encontrando una muy sencilla: te amo, y me alegra que seas tú."
+];
+const secrets = {
+ secret1:"Mi secreto es que a veces un detalle tuyo se me queda dando vueltas en la cabeza mucho después de que termina nuestra conversación. Quizá tú ni te das cuenta, pero para mí significa mucho. 🤎",
+ secret2:"Si algún día dudas de lo importante que eres para mí, no tienes que ser más bonita, más alegre ni más perfecta. Quiero conocerte tal como eres y recordarte con hechos que mereces cariño y respeto.",
+ secret3:"Si existieran mil universos, me gustaría tener la oportunidad de conocerte en cada uno. Y en cada uno, volvería a disfrutar el privilegio de descubrir quién eres."
+};
+const letters = {
+ sad:"Si hoy no ha sido un buen día, no tienes que fingir que todo está bien. Date tiempo, respira y recuerda que no tienes que resolverlo todo de una vez. Mereces paciencia, cariño y tranquilidad. Ojalá estas palabras te recuerden que no estás sola. 🤎",
+ miss:"Si me extrañas, piensa en todos los momentos bonitos que todavía podemos crear. La distancia o el tiempo no borran lo que significas para mí. Ojalá pudiera convertir estas palabras en un ratito de compañía.",
+ smile:"Te dejo una misión pequeñita: recuerda una de tus ocurrencias, una canción que te guste o algún momento que te haya hecho reír. El mundo necesita esa sonrisa tuya, pero no tienes que forzarla: que llegue cuando esté lista. 🌷",
+ doubt:"No tienes que ser perfecta para merecer amor. Me importas por quien eres, por tus ideas, tus sentimientos, tus sueños y también por tus días complicados. Quiero demostrarte con acciones que mi cariño viene acompañado de respeto y honestidad. 🤎"
+};
+const quiz=[
+ {q:"¿Quién dio el primer beso?",opts:["Norge · Little sunshine","Channel · Ojitos lindos","Fue cosa de los dos"],a:null,why:"¡Ese recuerdo ya forma parte de vuestra historia! 🤎"},
+ {q:"¿Quién dijo «me gustas» primero?",opts:["Norge · Little sunshine","Channel · Ojitos lindos","Los dos casi al mismo tiempo"],a:null,why:"Lo bonito es que ese sentimiento encontró respuesta."},
+ {q:"¿Quién habla más de casarse y de un futuro juntos?",opts:["Norge · Little sunshine","Channel · Ojitos lindos","Los dos lo imaginan"],a:null,why:"Ojalá los sueños se conviertan en planes, a su debido tiempo."},
+ {q:"¿Quién es más intenso cuando se trata de demostrar cariño?",opts:["Norge · Little sunshine","Channel · Ojitos lindos","Empate: los dos"],a:null,why:"Cada uno tiene su manera especial de querer."},
+ {q:"¿Quién suele extrañar más al otro?",opts:["Norge · Little sunshine","Channel · Ojitos lindos","No se puede medir: se extrañan igual"],a:null,why:"La distancia se hace más pequeña cuando hay cariño."}
+];
+const promises=[
+"Prometo escucharte con atención, incluso cuando no tengamos las mismas palabras.",
+"Prometo respetar tus ideas, tus tiempos y tu espacio.",
+"Prometo hablar con sinceridad, también cuando algo sea difícil.",
+"Prometo celebrar tus logros sin competir con ellos.",
+"Prometo apoyarte sin intentar decidir por ti.",
+"Prometo cuidar los pequeños detalles que te hacen sentir querida.",
+"Prometo aprender de mis errores y no repetirlos por orgullo.",
+"Prometo no dar por sentado el tiempo que compartimos.",
+"Prometo hacer espacio para tus sueños y los míos.",
+"Prometo reír contigo y no perder la ternura en lo cotidiano.",
+"Prometo respetar nuestros desacuerdos.",
+"Prometo preguntarte cómo estás y escuchar la respuesta.",
+"Prometo cuidar la confianza con hechos.",
+"Prometo acompañarte sin apagar tu independencia.",
+"Prometo recordar que somos dos personas que siguen creciendo.",
+"Prometo crear recuerdos auténticos, no una relación perfecta de apariencia.",
+"Prometo pedir perdón cuando corresponda y cambiar lo que pueda mejorar.",
+"Prometo celebrar también las pequeñas victorias.",
+"Prometo seguir conociéndote en cada etapa de la vida.",
+"Prometo que mis palabras intentarán estar a la altura de mis acciones."
+];
+const rouletteMessages=[
+"Me gusta la vida un poquito más desde que formas parte de ella. 🤎",
+"No necesito un día especial para recordarte lo importante que eres.",
+"Entre tantas casualidades, qué bonito que nuestras historias se encontraran.",
+"Quiero seguir descubriendo tus pequeñas formas de ver el mundo.",
+"Mi parte favorita de muchos días es saber que puedo compartirlos contigo.",
+"Si el amor se demuestra en detalles, quiero llenar nuestros días de ellos.",
+"No eres un capítulo bonito: eres una historia que me ilusiona seguir escribiendo.",
+"Que nunca nos falten respeto, confianza, paciencia y motivos para reír.",
+"Te elegiría en los días sencillos, que son los que más construyen una vida.",
+"Gracias por ser tú. No hace falta adornarlo más."
+];
+const $=id=>document.getElementById(id);
+const defaultSettings={
+ yourName:"",herName:"",initialA:"N",initialB:"C",startDate:"2026-10-12",startTime:"01:00",
+ place:"Guanajay, Artemisa, Cuba",
+ dedication:"Hay regalos que se envuelven en papel y otros que se construyen con recuerdos, palabras y un poquito de cielo. Este es para ti.",
+ letterText:"Channel, mi ojitos lindos:\n\nQuiero dedicarte este pequeño universo porque a veces siento que un simple «te amo» se queda corto para explicar lo importante que eres en mi vida. Desde que llegaste, hay cosas cotidianas que tienen otro brillo: una conversación, una sonrisa, una canción o la ilusión de volver a saber de ti.\n\nNo quiero prometerte una historia perfecta, porque sé que somos personas que siguen aprendiendo. Quiero ofrecerte algo más sincero: respeto, lealtad, paciencia y la voluntad de cuidar lo que estamos construyendo. Quiero estar a tu lado en los días extraordinarios y también en esos días normales que, cuando se comparten con la persona correcta, terminan siendo mis favoritos.\n\nMe ilusiona imaginar todo lo que todavía nos queda: conocernos más, cumplir sueños, viajar, crear recuerdos, formar un hogar algún día y, si la vida nos lo permite, llegar a ese momento en que podamos mirarnos y decir que valió la pena cada paso.\n\nAdmiro tu forma de ser, tus sentimientos, tus ocurrencias y esos detalles que te hacen ser tú. No quiero que nunca sientas que tienes que dejar de ser quien eres para recibir mi cariño. Quiero que puedas crecer, brillar y perseguir tus sueños sabiendo que tienes a alguien que desea verte feliz.\n\nGracias por ser mi Channel, mi ojitos lindos y una persona tan especial en mi historia. Con todo mi cariño, tu Little sunshine,\nNorge. 🤎",
+ timelineText:"12 de octubre de 2026 | El comienzo de nuestra historia | Una fecha que elegimos guardar como el primer capítulo de algo muy bonito.\nUn día especial | Un recuerdo que guardo | Un momento que siempre me hará sonreír.\nLo que viene | Muchos capítulos por escribir | Todavía nos esperan recuerdos, aprendizajes y sueños compartidos.",
+ accentColor:"#c9a45c"
+};
+let settings={...defaultSettings};
+let reasonIndex=0;
+let favorites=JSON.parse(localStorage.getItem("cn_favorites")||"[]");
+let quizIndex=0,quizAnswered=false;
+let photoDB=null;
+
+function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),2400)}
+function saveLocal(key,val){try{localStorage.setItem(key,JSON.stringify(val))}catch(e){toast("El navegador no pudo guardar este cambio. Prueba con menos fotografías.")}}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function formatDate(d){if(!d)return "la fecha elegida";const [y,m,day]=d.split("-").map(Number);return new Date(y,m-1,day).toLocaleDateString("es-ES",{day:"numeric",month:"long",year:"numeric"})}
+function updateCounter(){
+ const [y,m,d]=settings.startDate.split("-").map(Number),[hh,mm]=settings.startTime.split(":").map(Number);
+ const start=new Date(y,m-1,d,hh,mm,0),now=new Date(),diff=now-start;
+ if(!Number.isFinite(diff)||diff<0){$("days").textContent="—";$("hours").textContent="—";$("minutes").textContent="—";$("seconds").textContent="—";$("counterLabel").textContent="Nuestra cuenta comienza en la fecha elegida. 🤎";return}
+ const sec=Math.floor(diff/1000),days=Math.floor(sec/86400),hours=Math.floor(sec%86400/3600),mins=Math.floor(sec%3600/60),secs=sec%60;
+ $("days").textContent=days;$("hours").textContent=String(hours).padStart(2,"0");$("minutes").textContent=String(mins).padStart(2,"0");$("seconds").textContent=String(secs).padStart(2,"0");
+}
+function showModal(title,body){$("modalTitle").textContent=title;$("modalBody").textContent=body;$("messageModal").classList.add("show")}
+function closeModal(){$("messageModal").classList.remove("show")}
+function openLetter(){ $("envelope").classList.add("open");showModal("Una carta para ti",settings.letterText)}
+
+function applySettings(){
+ $("heroInitials").innerHTML=`${escapeHTML(settings.initialA)} <span class="heart-mark">♡</span> ${escapeHTML(settings.initialB)}`;
+ $("heroSubtitle").textContent=settings.dedication;
+ $("counterLabel").textContent=`Desde ${formatDate(settings.startDate)} · ${settings.startTime} · ${settings.place}`;
+ $("envelopePreview").textContent=settings.letterText.slice(0,75)+"…";
+ $("finalDedication").textContent=settings.letterText;
+ document.documentElement.style.setProperty("--accent",settings.accentColor);
+ document.documentElement.style.setProperty("--gold",settings.accentColor);
+}
+function renderTimeline(){
+ const el=$("timeline");if(!el)return;el.innerHTML="";
+ (settings.timelineText||"").split("\n").forEach(line=>{
+  const parts=line.split("|").map(p=>p.trim());if(parts.length<2)return;
+  const [date,title,desc]=parts;
+  const ev=document.createElement("div");ev.className="event";
+  const t=document.createElement("time");t.textContent=date;
+  const h=document.createElement("h4");h.textContent=title;
+  const p=document.createElement("p");p.textContent=desc||"";
+  ev.append(t,h,p);el.append(ev);
+ });
+}
+
+function renderLetters(){
+ document.querySelectorAll(".letter-card").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+   const key=btn.dataset.letter;
+   const title=btn.querySelector("strong").textContent;
+   showModal(title,letters[key]||"");
+  });
+ });
+}
+
+function renderReason(){
+ $("reasonText").textContent=reasons[reasonIndex];
+ $("reasonCounter").textContent=`RAZÓN ${reasonIndex+1} DE ${reasons.length}`;
+ $("reasonProgress").style.width=((reasonIndex+1)/reasons.length*100)+"%";
+ $("favoriteCount").textContent=`${favorites.length} favoritas guardadas`;
+ $("favoriteReason").classList.toggle("active",favorites.includes(reasonIndex));
+}
+function renderQuiz(){
+ const q=quiz[quizIndex];quizAnswered=false;
+ $("quizProgress").textContent=`PREGUNTA ${quizIndex+1} DE ${quiz.length}`;
+ $("quizQuestion").textContent=q.q;
+ const opts=$("quizOptions");opts.innerHTML="";
+ q.opts.forEach((o,i)=>{
+  const b=document.createElement("button");b.className="quiz-option";b.textContent=o;
+  b.addEventListener("click",()=>{
+   if(quizAnswered)return;quizAnswered=true;
+   opts.querySelectorAll(".quiz-option").forEach(x=>x.disabled=true);
+   b.style.background="#e7d3b8";
+   $("quizFeedback").textContent=q.why||"";
+   $("nextQuiz").disabled=false;
+  });
+  opts.append(b);
+ });
+ $("quizFeedback").textContent="";
+ $("nextQuiz").disabled=true;
+}
+function renderPromises(){
+ const el=$("promiseList");el.innerHTML="";
+ promises.forEach((p,i)=>{
+  const d=document.createElement("label");d.className="promise";
+  const cb=document.createElement("input");cb.type="checkbox";cb.dataset.i=i;
+  const s=document.createElement("span");s.textContent=p;
+  d.append(cb,s);el.append(d);
+ });
+ el.addEventListener("change",()=>{
+  const n=el.querySelectorAll("input:checked").length;
+  $("promiseCount").textContent=`${n} de ${promises.length} promesas marcadas`;
+ });
+}
+
+function init(){
+ applySettings();renderTimeline();renderLetters();renderReason();renderQuiz();renderPromises();updateCounter();setInterval(updateCounter,1000);
+
+ $("startGift").addEventListener("click",()=>{$("carta").scrollIntoView({behavior:"smooth"});setTimeout(openLetter,450)});
+ $("openLetter").addEventListener("click",openLetter);
+ $("envelope").addEventListener("click",openLetter);
+ $("envelope").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openLetter()}});
+ $("closeModal").addEventListener("click",closeModal);
+ $("modalOk").addEventListener("click",closeModal);
+ $("messageModal").addEventListener("click",e=>{if(e.target===$("messageModal"))closeModal()});
+
+ $("prevReason").addEventListener("click",()=>{reasonIndex=(reasonIndex-1+reasons.length)%reasons.length;renderReason();});
+ $("nextReason").addEventListener("click",()=>{reasonIndex=(reasonIndex+1)%reasons.length;renderReason();});
+ $("randomReason").addEventListener("click",()=>{reasonIndex=Math.floor(Math.random()*reasons.length);renderReason();});
+ $("favoriteReason").addEventListener("click",()=>{
+  if(favorites.includes(reasonIndex)){favorites=favorites.filter(i=>i!==reasonIndex);toast("Quitada de favoritas");}
+  else{favorites.push(reasonIndex);toast("Guardada en favoritas 🤎");}
+  localStorage.setItem("cn_favorites",JSON.stringify(favorites));renderReason();
+ });
+ $("showFavorites").addEventListener("click",()=>{
+  if(!favorites.length){showModal("Tus favoritas","Todavía no has guardado ninguna razón. Toca «♡ Guardar favorita» en las que más te gusten.");return;}
+  showModal("Tus favoritas",favorites.map(i=>`• ${reasons[i]}`).join("\n\n"));
+ });
+
+ $("nextQuiz").addEventListener("click",()=>{if(quizIndex<quiz.length-1){quizIndex++;renderQuiz();}else{showModal("Juego terminado","Has llegado al final. Puedes volver a empezar cuando quieras. 🤎");}});
+ $("restartQuiz").addEventListener("click",()=>{quizIndex=0;renderQuiz();});
+
+ document.querySelectorAll(".secret").forEach(b=>b.addEventListener("click",()=>{$("secretMessage").textContent=secrets[b.dataset.secret]||"";}));
+ $("bigHeart").addEventListener("click",()=>{
+  const stage=$("heartStage");
+  for(let i=0;i<6;i++){
+   const s=document.createElement("span");s.className="float-heart";s.textContent="♥";
+   s.style.left=(30+Math.random()*40)+"%";s.style.top="60%";
+   s.style.setProperty("--drift",(Math.random()*60-30)+"px");
+   s.style.color="#b87970";
+   stage.append(s);setTimeout(()=>s.remove(),1800);
+  }
+ });
+
+ const audio=$("audioPlayer");let musicUrl="";
+ $("musicFile").addEventListener("change",e=>{
+  const f=e.target.files?.[0];if(!f)return;
+  if(musicUrl)URL.revokeObjectURL(musicUrl);
+  musicUrl=URL.createObjectURL(f);audio.src=musicUrl;
+ });
+ $("playMusic").addEventListener("click",()=>{if(audio.src)audio.play().catch(()=>toast("No se pudo reproducir. Elige un archivo primero."));else toast("Elige un archivo de música primero.");});
+ $("pauseMusic").addEventListener("click",()=>audio.pause());
+
+ $("flowerButton").addEventListener("click",()=>{
+  const msgs=["Las flores no compiten entre ellas: florecen a su ritmo. Tú también puedes. 🌷","Cada flor de este jardín es un pequeño «te quiero» para ti. 🌸","Que nunca te falten motivos para florecer, aunque algunos días cueste. 🌻"];
+  $("flowerMessage").textContent=msgs[Math.floor(Math.random()*msgs.length)];
+ });
+
+ $("spinRoulette").addEventListener("click",()=>{
+  $("rouletteText").textContent=rouletteMessages[Math.floor(Math.random()*rouletteMessages.length)];
+ });
+
+ $("photoFiles").addEventListener("change",e=>{
+  const files=[...e.target.files||[]];const g=$("gallery");
+  files.forEach(f=>{
+   const r=new FileReader();
+   r.onload=()=>{
+    const img=document.createElement("img");img.src=r.result;img.alt="Recuerdo";
+    g.append(img);$("galleryHint").textContent="";
+   };
+   r.readAsDataURL(f);
+  });
+ });
+
+ $("revealFinal").addEventListener("click",()=>{$("finalReveal").classList.remove("hidden");$("revealFinal").classList.add("hidden");});
+
+ $("saveSettings").addEventListener("click",()=>{
+  settings.initialA=$("initialA").value||"N";
+  settings.initialB=$("initialB").value||"C";
+  settings.startDate=$("startDate").value||"2026-10-12";
+  settings.startTime=$("startTime").value||"01:00";
+  settings.place=$("place").value||"";
+  settings.dedication=$("dedication").value||defaultSettings.dedication;
+  settings.letterText=$("letterText").value||defaultSettings.letterText;
+  settings.timelineText=$("timelineText").value||defaultSettings.timelineText;
+  settings.accentColor=$("accentColor").value||"#c9a45c";
+  saveLocal("cn_settings",settings);
+  applySettings();renderTimeline();updateCounter();
+  $("settingsStatus").textContent="Guardado en este navegador. 🤎";
+ });
+ $("resetSettings").addEventListener("click",()=>{
+  settings={...defaultSettings};
+  localStorage.removeItem("cn_settings");
+  localStorage.removeItem("cn_favorites");favorites=[];reasonIndex=0;
+  $("initialA").value=defaultSettings.initialA;$("initialB").value=defaultSettings.initialB;
+  $("startDate").value=defaultSettings.startDate;$("startTime").value=defaultSettings.startTime;
+  $("place").value=defaultSettings.place;$("dedication").value=defaultSettings.dedication;
+  $("letterText").value=defaultSettings.letterText;$("timelineText").value=defaultSettings.timelineText;
+  $("accentColor").value=defaultSettings.accentColor;
+  applySettings();renderTimeline();renderReason();updateCounter();
+  $("settingsStatus").textContent="Valores restaurados.";
+ });
+
+ const saved=localStorage.getItem("cn_settings");
+ if(saved){try{settings={...defaultSettings,...JSON.parse(saved)};
+  $("initialA").value=settings.initialA;$("initialB").value=settings.initialB;
+  $("startDate").value=settings.startDate;$("startTime").value=settings.startTime;
+  $("place").value=settings.place;$("dedication").value=settings.dedication;
+  $("letterText").value=settings.letterText;$("timelineText").value=settings.timelineText;
+  $("accentColor").value=settings.accentColor;
+  applySettings();renderTimeline();updateCounter();
+ }catch(e){}}
+ $("settingsTop").addEventListener("click",()=>$("personalizar").scrollIntoView({behavior:"smooth"}));
+}
+document.addEventListener("DOMContentLoaded",init);
+</script>
+</body>
+</html>
